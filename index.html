@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<meta name="description" content="My first PWA"/>
+    <title>My First PWA</title>
+	<link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="manifest" href="/first-pwa/manifest.json">
+</head>
+<body>
+	<!--Navigasi-->
+	<nav class="teal lighten-1" role="navigation">
+		<div class="nav-wrapper container">
+			<a href="#" class="brand-logo" id="logo-container">My App</a>
+			<a href="#" class="sidenav-trigger" data-target="nav-mobile">|||</a>
+
+			<ul class="topnav right hide-on-med-and-down"></ul>
+			<ul class="sidenav" id="nav-mobile"></ul>
+		</div>
+	</nav>
+	<!--Akhir Navigasi-->
+
+	<div class="container" id="body-content"></div>
+
+	<script src="js/materialize.min.js"></script>
+	<script src="js/nav.js"></script>
+	  <script>
+  // REGISTER SERVICE WORKER
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/first-pwa/serviceworker.js')
+      .then(function() {
+        console.log('Pendaftaran ServiceWorker berhasil');
+      })
+      .catch(function(){
+        console.log('Pendaftaran ServiceWorker gagal');
+      });
+    })
+  } else {
+    console.log("ServiceWorker belum didukung browser ini.")
+  }
+  </script>
+</body>
+</html>
